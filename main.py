@@ -1,4 +1,6 @@
 import os
+import re
+
 
 def ReadFile(file):
     data = []
@@ -7,6 +9,12 @@ def ReadFile(file):
             data.append(line)
     return data
 
-log = ReadFile(input('Введите путь до файла:'))
 
-print(*log, sep='\n')
+def SearchError(log, word):
+    filteredLog = [x for x in log if re.search(word, x)]
+    return filteredLog
+
+
+log = ReadFile(input('Введите путь до файла:'))
+errorLog = SearchError(log, input('Введите слово для поиска:'))
+print(*errorLog, sep='\n')
