@@ -15,6 +15,12 @@ def SearchError(log, word):
     return filteredLog
 
 
+def WriteFile(newlog):
+    with open('parced.txt', 'w') as f:
+        for line in newlog:
+            f.write(line + '\n')
+
 log = ReadFile(input('Введите путь до файла:'))
 errorLog = SearchError(log, input('Введите слово для поиска:'))
+WriteFile(errorLog)
 print(*errorLog, sep='\n')
